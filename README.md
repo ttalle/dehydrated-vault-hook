@@ -66,16 +66,16 @@ This script can be used in two ways:
 
 Set this script as your HOOK script in Dehydrated.
 
-### Using ```dehydrated-dispatch```
+### Using [dehydrated-dispatch-hook](https://github.com/ttalle/dehydrated-dispatch-hook)
 
 Since the Vault only allows for storage it only acts on the
 ```deploy_cert``` and ```unchanged_cert``` hooks. To verify your 
 certificates you will need another script that does that.
 
-With the dehydrated-dispatch hook you can combine two hook scripts and
+With the dehydrated-dispatch-hook you can combine two hook scripts and
 allow another hook to do the deploy actions.
 
-A nice example would be the vultr-hook script that uses the Vultr DNS
+A nice example would be the [dehydrated-vultr-hook](https://github.com/ttalle/dehydrated-vultr-hook) script that uses the Vultr DNS
 service for dns-01 verification.
 
 ## Next
