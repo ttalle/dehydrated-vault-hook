@@ -40,7 +40,7 @@ upload_certificate() {
   TOP=$(<<<"${DOMAIN}" grep -oP '[^\.]+\.[^\.]+$')
   HOST="${DOMAIN/.$TOP/}"
 
-  echo " + Storing certificates in vault at secret/ca/${TOP}/${HOST}"
+  echo " + Storing certificates in vault at ${VAULT_SECRET_BASE}/${TOP}/${HOST}"
 
   acquire_token
 
