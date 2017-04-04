@@ -11,7 +11,7 @@ VAULT_TOKEN=""
 acquire_token() {
   VAULT_TOKEN=$(curl -s -X POST \
     -d "{\"role_id\":\"${VAULT_ROLE_ID}\",\"secret_id\":\"${VAULT_SECRET_ID}\"}" \
-    "${VAULT_ADDR}/v1/auth/approle/login" | jq -r .auth.client_token)
+    "${VAULT_ADDRESS}/v1/auth/approle/login" | jq -r .auth.client_token)
 }
 
 upload_certificate() {
@@ -53,7 +53,7 @@ upload_certificate() {
       --arg fullchain "$(< ${FULLCHAINFILE} )" \
       --arg timestamp "${TIMESTAMP}" \
       '{cert:$cert,key:$key,chain:$chain,fullchain:$fullchain,timestamp:$timestamp}' ) \
-    "${VAULT_ADDR}/v1/${VAULT_SECRET_BASE}/${TOP}/${HOST}"
+    "${VAULT_ADDRESS}/v1/${VAULT_SECRET_BASE}/${TOP}/${HOST}"
 }
 
 deploy_challenge() {
