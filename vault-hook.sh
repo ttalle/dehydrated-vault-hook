@@ -45,6 +45,7 @@ upload_certificate() {
   acquire_token
 
   curl \
+    --silent \
     --header "X-Vault-Token: $VAULT_TOKEN" \
     --request POST \
     -d @<( jq -n --arg cert "$(< ${CERTFILE} )" \
