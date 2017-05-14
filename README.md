@@ -52,8 +52,6 @@ SECRET_ID to the values for the ```ca``` AppRole.
  It should look like the following:
 
 ```bash
-#!/usr/bin/env bash
-
 VAULT_ROLE_ID="xxxxxxx-yyyy-zzzz-aaaa-bbbbbbbbbbbb"
 VAULT_SECRET_ID="cccccccc-dddd-eeee-ffff-ggggggggggggg"
 

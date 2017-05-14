@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 VAULT_ROLE_ID="xxxxxxx-yyyy-zzzz-aaaa-bbbbbbbbbbbb"
 VAULT_SECRET_ID="cccccccc-dddd-eeee-ffff-ggggggggggggg"
 
