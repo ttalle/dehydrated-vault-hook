@@ -44,10 +44,10 @@ upload_certificate() {
     --silent \
     --header "X-Vault-Token: $VAULT_TOKEN" \
     --request POST \
-    -d @<( jq -n --arg cert "$(< ${CERTFILE} )" \
-      --arg key "$(< ${KEYFILE} )" \
-      --arg chain "$(< ${CHAINFILE} )" \
-      --arg fullchain "$(< ${FULLCHAINFILE} )" \
+    -d @<( jq -n --arg cert "$(< "${CERTFILE}" )" \
+      --arg key "$(< "${KEYFILE}" )" \
+      --arg chain "$(< "${CHAINFILE}" )" \
+      --arg fullchain "$(< "${FULLCHAINFILE}" )" \
       --arg timestamp "${TIMESTAMP}" \
       '{cert:$cert,key:$key,chain:$chain,fullchain:$fullchain,timestamp:$timestamp}' ) \
     "${VAULT_ADDRESS}/v1/${VAULT_SECRET_BASE}/${TOP}/${HOST}"
