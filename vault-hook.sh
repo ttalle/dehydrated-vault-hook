@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# shellcheck disable=SC1091
 source "/etc/dehydrated/vault.inc"
 
 VAULT_TOKEN=""
