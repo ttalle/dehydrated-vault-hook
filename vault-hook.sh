@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
-BASEDIR=$(dirname $0)
-
 source "/etc/dehydrated/vault.inc"
-
-SCRIPTNAME="vault-hook.sh"
 
 VAULT_TOKEN=""
 
