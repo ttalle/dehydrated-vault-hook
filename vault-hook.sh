@@ -75,6 +75,7 @@ deploy_challenge() {
 }
 
 clean_challenge() {
+    # shellcheck disable=SC2034
     local DOMAIN="${1}" TOKEN_FILENAME="${2}" TOKEN_VALUE="${3}"
 
     # This hook is called after attempting to validate each domain,
@@ -132,6 +133,7 @@ unchanged_cert() {
 }
 
 invalid_challenge() {
+    # shellcheck disable=SC2034
     local DOMAIN="${1}" RESPONSE="${2}"
 
     # This hook is called if the challenge response has failed, so domain
@@ -146,6 +148,7 @@ invalid_challenge() {
 }
 
 request_failure() {
+    # shellcheck disable=SC2034
     local STATUSCODE="${1}" REASON="${2}" REQTYPE="${3}"
 
     # This hook is called when a HTTP request fails (e.g., when the ACME
