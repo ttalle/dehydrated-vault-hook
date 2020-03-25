@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR=$(dirname $0)
-
+# shellcheck disable=SC1091
 source "/etc/dehydrated/vault.inc"
-
-SCRIPTNAME="vault-hook.sh"
 
 VAULT_TOKEN=""
 
@@ -48,10 +45,10 @@ upload_certificate() {
     --silent \
     --header "X-Vault-Token: $VAULT_TOKEN" \
     --request POST \
-    -d @<( jq -n --arg cert "$(< ${CERTFILE} )" \
-      --arg key "$(< ${KEYFILE} )" \
-      --arg chain "$(< ${CHAINFILE} )" \
-      --arg fullchain "$(< ${FULLCHAINFILE} )" \
+    -d @<( jq -n --arg cert "$(< "${CERTFILE}" )" \
+      --arg key "$(< "${KEYFILE}" )" \
+      --arg chain "$(< "${CHAINFILE}" )" \
+      --arg fullchain "$(< "${FULLCHAINFILE}" )" \
       --arg timestamp "${TIMESTAMP}" \
       '{cert:$cert,key:$key,chain:$chain,fullchain:$fullchain,timestamp:$timestamp}' ) \
     "${VAULT_ADDRESS}/v1/${VAULT_SECRET_BASE}/${TOP}/${HOST}"
@@ -79,6 +76,7 @@ deploy_challenge() {
 }
 
 clean_challenge() {
+    # shellcheck disable=SC2034
     local DOMAIN="${1}" TOKEN_FILENAME="${2}" TOKEN_VALUE="${3}"
 
     # This hook is called after attempting to validate each domain,
@@ -136,6 +134,7 @@ unchanged_cert() {
 }
 
 invalid_challenge() {
+    # shellcheck disable=SC2034
     local DOMAIN="${1}" RESPONSE="${2}"
 
     # This hook is called if the challenge response has failed, so domain
@@ -150,6 +149,7 @@ invalid_challenge() {
 }
 
 request_failure() {
+    # shellcheck disable=SC2034
     local STATUSCODE="${1}" REASON="${2}" REQTYPE="${3}"
 
     # This hook is called when a HTTP request fails (e.g., when the ACME
