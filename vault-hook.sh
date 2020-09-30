@@ -6,7 +6,7 @@ source "/etc/dehydrated/vault.inc"
 VAULT_TOKEN=""
 
 acquire_token() {
-  VAULT_TOKEN=$(curl -s -X POST \
+  VAULT_TOKEN=$(curl ${CURL_OPTS[@]} -X POST \
     -d "{\"role_id\":\"${VAULT_ROLE_ID}\",\"secret_id\":\"${VAULT_SECRET_ID}\"}" \
     "${VAULT_ADDRESS}/v1/auth/approle/login" | jq -r .auth.client_token)
 }
@@ -41,8 +41,7 @@ upload_certificate() {
 
   acquire_token
 
-  curl \
-    --silent \
+  curl ${CURL_OPTS[@]} \
     --header "X-Vault-Token: $VAULT_TOKEN" \
     --request POST \
     -d @<( jq -n --arg cert "$(< "${CERTFILE}" )" \
